@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2743989320553423149}
   - component: {fileID: 6819513612101084545}
   - component: {fileID: 3707092515321411133}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,8 +125,8 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 8
-  m_Material: {fileID: 0}
+  m_GravityScale: 6
+  m_Material: {fileID: 6200000, guid: 6b2d957d8499741419e4e467f062aa6d, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -214,6 +214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00b93cf718348de489f5c95a54765702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 10
-  jumpSpeed: 25
-  climbSpeed: 1
+  runSpeed: 7
+  jumpSpeed: 20
+  climbSpeed: 5

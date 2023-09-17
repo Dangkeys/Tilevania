@@ -12,9 +12,12 @@ public class PlayerMovement : MonoBehaviour
     Vector2 moveInput;
     Rigidbody2D myRigidBody;
     [SerializeField] float runSpeed = 10;
+    [SerializeField] float jumpSpeed = 25;
+    Animator myAnimator;
     private void Awake()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
+        myAnimator = GetComponent<Animator>();
     }
     void Start()
     {
@@ -33,6 +36,12 @@ public class PlayerMovement : MonoBehaviour
         moveInput = value.Get<Vector2>();
         Debug.Log(moveInput);
     }
+    void OnJump(InputValue value)
+    {
+        if (value.isPressed)
+            myRigidBody.velocity += new Vector2(0f, jumpSpeed);
+
+    }
     private void Run()
     {
         Vector2 playerVelocity = new Vector2(moveInput.x * runSpeed, myRigidBody.velocity.y);
@@ -41,7 +50,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void FlipSprite()
     {
-        if (Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon)
+        bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
+        myAnimator.SetBool("isRunning", playerHasHorizontalSpeed);
+        if (playerHasHorizontalSpeed)
             transform.localScale = new Vector2(Mathf.Sign(myRigidBody.velocity.x), transform.localScale.y);
     }
 }

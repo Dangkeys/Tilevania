@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
+    bool isAlive = true;
     Vector2 moveInput;
     Rigidbody2D myRigidBody;
     [SerializeField] float runSpeed = 10;
@@ -33,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isAlive) return;
         Run();
         FlipSprite();
         ClimbLadder();
@@ -42,25 +44,35 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
-            myAnimator.SetBool("isClimbing",false);
+            myAnimator.SetBool("isClimbing", false);
             myRigidBody.gravityScale = gravityScaleAtStart;
             return;
         }
-        myAnimator.SetBool("isRunning",false);
+        myAnimator.SetBool("isRunning", false);
         Vector2 climbVelocity = new Vector2(myRigidBody.velocity.x, moveInput.y * climbSpeed);
         myRigidBody.velocity = climbVelocity;
         myRigidBody.gravityScale = 0;
         bool playerHasVerticalSpeed = Mathf.Abs(myRigidBody.velocity.y) > Mathf.Epsilon;
-        myAnimator.SetBool("isClimbing",playerHasVerticalSpeed);
+        myAnimator.SetBool("isClimbing", playerHasVerticalSpeed);
     }
 
     void OnMove(InputValue value)
     {
+        if (!isAlive) return;
         moveInput = value.Get<Vector2>();
         Debug.Log(moveInput);
+        Die();
     }
+
+    private void Die()
+    {
+        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemies")))
+            isAlive = false;
+    }
+
     void OnJump(InputValue value)
     {
+        if (!isAlive) return;
         if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) return;
         if (value.isPressed)
             myRigidBody.velocity += new Vector2(0f, jumpSpeed);

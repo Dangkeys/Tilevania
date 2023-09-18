@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     Animator myAnimator;
     CapsuleCollider2D myBodyCollider;
     BoxCollider2D myFeetCollider;
+    [SerializeField] Vector2 deathKick = new Vector2 (10f, 10f);
+
     private void Awake()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
@@ -38,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         Run();
         FlipSprite();
         ClimbLadder();
+        Die();
     }
 
     void ClimbLadder()
@@ -60,14 +63,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isAlive) return;
         moveInput = value.Get<Vector2>();
-        Debug.Log(moveInput);
-        Die();
     }
 
     private void Die()
     {
-        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemies")))
+        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemies", "Hazards")))
+        {
             isAlive = false;
+            myAnimator.SetTrigger("Dying");
+            myRigidBody.velocity = deathKick;
+        }
     }
 
     void OnJump(InputValue value)

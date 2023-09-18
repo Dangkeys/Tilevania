@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float runSpeed = 10;
     [SerializeField] float jumpSpeed = 25;
     [SerializeField] float climbSpeed = 5;
+    [SerializeField] GameObject bullet;
+    [SerializeField] Transform gun;
     float gravityScaleAtStart;
     Animator myAnimator;
     CapsuleCollider2D myBodyCollider;
@@ -59,6 +61,11 @@ public class PlayerMovement : MonoBehaviour
         myAnimator.SetBool("isClimbing", playerHasVerticalSpeed);
     }
 
+    void OnFire(InputValue value)
+    {
+        if(!isAlive) return;
+        Instantiate(bullet, gun.position, transform.rotation);
+    }
     void OnMove(InputValue value)
     {
         if (!isAlive) return;

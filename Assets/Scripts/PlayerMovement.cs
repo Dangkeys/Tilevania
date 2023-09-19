@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     CapsuleCollider2D myBodyCollider;
     BoxCollider2D myFeetCollider;
     [SerializeField] Vector2 deathKick = new Vector2 (10f, 10f);
+    [SerializeField] float dyingDelayTime = 0.5f;
 
     private void Awake()
     {
@@ -76,10 +77,17 @@ public class PlayerMovement : MonoBehaviour
     {
         if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemies", "Hazards")))
         {
-            isAlive = false;
-            myAnimator.SetTrigger("Dying");
-            myRigidBody.velocity = deathKick;
+            StartCoroutine(Dying());
         }
+    }
+
+    IEnumerator Dying()
+    {
+        isAlive = false;
+        myAnimator.SetTrigger("Dying");
+        myRigidBody.velocity = deathKick;
+        yield return new WaitForSecondsRealtime(dyingDelayTime);
+        FindObjectOfType<GameSession>().ProcessPlayerDeath();
     }
 
     void OnJump(InputValue value)

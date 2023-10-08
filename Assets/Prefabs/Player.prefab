@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00b93cf718348de489f5c95a54765702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  death: {fileID: 8300000, guid: 1f3d5de3de856434a9e68e95df7a7da5, type: 3}
   fire: {fileID: 8300000, guid: 92e4863f94fda3840a1b1f268ae1323b, type: 3}
   runSpeed: 7
   jumpSpeed: 20

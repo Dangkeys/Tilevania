@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     bool isAlive = true;
     Vector2 moveInput;
     Rigidbody2D myRigidBody;
-    [SerializeField] AudioClip footstep;
+    [SerializeField] AudioClip death;
     [SerializeField] AudioClip fire;
     [SerializeField] float runSpeed = 10;
     [SerializeField] float jumpSpeed = 25;
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     Animator myAnimator;
     CapsuleCollider2D myBodyCollider;
     BoxCollider2D myFeetCollider;
-    [SerializeField] Vector2 deathKick = new Vector2 (10f, 10f);
+    [SerializeField] Vector2 deathKick = new Vector2(10f, 10f);
     [SerializeField] float dyingDelayTime = 0.5f;
 
     private void Awake()
@@ -66,8 +66,8 @@ public class PlayerMovement : MonoBehaviour
 
     void OnFire(InputValue value)
     {
-        if(!isAlive) return;
-        AudioSource.PlayClipAtPoint(fire, transform.position);
+        if (!isAlive) return;
+        AudioSource.PlayClipAtPoint(fire, Camera.main.transform.position, .4f);
         Instantiate(bullet, gun.position, transform.rotation);
     }
     void OnMove(InputValue value)
@@ -80,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemies", "Hazards")))
         {
+            AudioSource.PlayClipAtPoint(death, Camera.main.transform.position, 1f);
             StartCoroutine(Dying());
         }
     }
@@ -104,13 +105,6 @@ public class PlayerMovement : MonoBehaviour
     private void Run()
     {
         Vector2 playerVelocity = new Vector2(moveInput.x * runSpeed, myRigidBody.velocity.y);
-        if(Mathf.Abs(playerVelocity.x) > Mathf.Epsilon)
-        {
-            AudioSource.PlayOne
-        }else
-        {
-            AudioSource.
-        }
 
         myRigidBody.velocity = playerVelocity;
     }

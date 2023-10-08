@@ -20,7 +20,8 @@ public class GameSession : MonoBehaviour
         else
             DontDestroyOnLoad(gameObject);
     }
-    private void Start() {
+    private void Start()
+    {
         livesText.text = playerLives.ToString();
         scoreText.text = score.ToString();
     }
@@ -28,7 +29,7 @@ public class GameSession : MonoBehaviour
     // Update is called once per frame
     public void ProcessPlayerDeath()
     {
-        if(playerLives > 1)
+        if (playerLives > 1)
             TakeLive();
         else
             ResetGameSession();

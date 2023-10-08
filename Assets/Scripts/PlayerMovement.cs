@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     bool isAlive = true;
     Vector2 moveInput;
     Rigidbody2D myRigidBody;
+    [SerializeField] AudioClip footstep;
+    [SerializeField] AudioClip fire;
     [SerializeField] float runSpeed = 10;
     [SerializeField] float jumpSpeed = 25;
     [SerializeField] float climbSpeed = 5;
@@ -65,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
     void OnFire(InputValue value)
     {
         if(!isAlive) return;
+        AudioSource.PlayClipAtPoint(fire, transform.position);
         Instantiate(bullet, gun.position, transform.rotation);
     }
     void OnMove(InputValue value)
@@ -101,6 +104,14 @@ public class PlayerMovement : MonoBehaviour
     private void Run()
     {
         Vector2 playerVelocity = new Vector2(moveInput.x * runSpeed, myRigidBody.velocity.y);
+        if(Mathf.Abs(playerVelocity.x) > Mathf.Epsilon)
+        {
+            AudioSource.PlayOne
+        }else
+        {
+            AudioSource.
+        }
+
         myRigidBody.velocity = playerVelocity;
     }
 

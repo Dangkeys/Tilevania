@@ -19,11 +19,10 @@ public class EnemyMovement : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.CompareTag("Player"))
-        {
+        if (other.CompareTag("Player") ||other.CompareTag("Coin")) return;
             moveSpeed = -moveSpeed;
             FlipEnemyFacing();
-        }
+        
     }
 
     void FlipEnemyFacing()

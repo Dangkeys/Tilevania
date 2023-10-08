@@ -130,7 +130,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 54265305
-  m_SortingLayer: 8
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: -1719850201, guid: 6211fad807a20bd44b1e04e83e4363bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -247,12 +247,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00b93cf718348de489f5c95a54765702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fire: {fileID: 8300000, guid: 92e4863f94fda3840a1b1f268ae1323b, type: 3}
   runSpeed: 7
   jumpSpeed: 20
   climbSpeed: 5
   bullet: {fileID: 1193791307294114589, guid: e1a8eaf8574695c4db0e158774c5480a, type: 3}
   gun: {fileID: 7632027625855487963}
   deathKick: {x: 20, y: 20}
+  dyingDelayTime: 0.5
 --- !u!61 &7135059422328938521
 BoxCollider2D:
   m_ObjectHideFlags: 0

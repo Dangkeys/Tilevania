@@ -2014,6 +2014,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameSession
       objectReference: {fileID: 0}
+    - target: {fileID: 1835780896373197584, guid: 1c63c6cfd8daf234eaaecc242e240edf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3898464296537829736, guid: 1c63c6cfd8daf234eaaecc242e240edf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

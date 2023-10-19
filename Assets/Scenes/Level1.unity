@@ -10980,11 +10980,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7625273137030179409, guid: 1593e206c94e14a4da4b28e1c2ef44c3, type: 3}
   m_PrefabInstance: {fileID: 2637673395403154945}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &1940611647 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 3000251799998358011, guid: 1c63c6cfd8daf234eaaecc242e240edf, type: 3}
-  m_PrefabInstance: {fileID: 2834049593466192221}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1968897636 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5507710014956184644, guid: b42db317914fd6746b98661b7a84b0b0, type: 3}
@@ -11331,26 +11326,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameSession
       objectReference: {fileID: 0}
-    - target: {fileID: 2673653813232827138, guid: 1c63c6cfd8daf234eaaecc242e240edf, type: 3}
-      propertyPath: mainSong
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2673653813232827138, guid: 1c63c6cfd8daf234eaaecc242e240edf, type: 3}
-      propertyPath: introSong
-      value: 
-      objectReference: {fileID: 1940611647}
-    - target: {fileID: 3000251799998358011, guid: 1c63c6cfd8daf234eaaecc242e240edf, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3000251799998358011, guid: 1c63c6cfd8daf234eaaecc242e240edf, type: 3}
-      propertyPath: m_Volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3000251799998358011, guid: 1c63c6cfd8daf234eaaecc242e240edf, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 8aa5a0d36bec0d442975d862ce20a756, type: 3}
     - target: {fileID: 3898464296537829736, guid: 1c63c6cfd8daf234eaaecc242e240edf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,6 +9,7 @@ public class GameSession : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI livesText;
     [SerializeField] TextMeshProUGUI scoreText;
+    ScoreKeeper scoreKeeper;
     [SerializeField] int playerLives = 3;
     [SerializeField] int score;
     // Start is called before the first frame update
@@ -19,6 +20,7 @@ public class GameSession : MonoBehaviour
             Destroy(gameObject);
         else
             DontDestroyOnLoad(gameObject);
+        scoreKeeper = FindObjectOfType<ScoreKeeper>();
     }
     private void Start()
     {
@@ -44,7 +46,7 @@ public class GameSession : MonoBehaviour
     {
         FindObjectOfType<ScenePersist>().ResetScenePersist();
         //hard code might change later
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Lose");
         Destroy(gameObject);
     }
 
